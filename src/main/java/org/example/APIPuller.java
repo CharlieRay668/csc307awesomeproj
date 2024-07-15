@@ -81,7 +81,7 @@ public class APIPuller {
             }
 
             conn.disconnect();
-            System.out.println(sb.toString());
+
             JSONObject json = new JSONObject(sb.toString());
             JSONArray forecastArray = json.getJSONObject("forecast").getJSONArray("forecastday");
             for (int i = 0; i < days; i++) {
