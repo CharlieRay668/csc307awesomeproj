@@ -8,6 +8,13 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
+/**
+ * (author) Charlie Ray
+ * (author) Christopher Grigorian
+ * (author) Eric Canihuante
+ * (author) Harold Ellis
+ */
+
 public class Frame extends JFrame {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Weather App");
@@ -15,7 +22,6 @@ public class Frame extends JFrame {
         frame.setSize(800, 800);
         APIPuller apiPuller = APIPuller.getInstance();
         ArrayList<Integer> temperatureForecast = apiPuller.getForecastTemperature("Denver", 7, false);
-
         // Create dataset
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         for (int i = 0; i < temperatureForecast.size(); i++) {
