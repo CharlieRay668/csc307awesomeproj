@@ -24,41 +24,6 @@ public class APIPuller {
         return instance;
     }
 
-    public ArrayList<Integer> getCurrentTemperature(String location) {
-        ArrayList<Integer> temperatures = new ArrayList<>();
-        String urlString = baseUrl + "/current.json?key=" + apiKey + "&q=" + location;
-        try {
-            URL url = new URL(urlString);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
-            conn.setRequestProperty("Accept", "application/json");
-            if (conn.getResponseCode() != 200) {
-                throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
-            }
-            BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-            StringBuilder sb = new StringBuilder();
-            String output;
-            while ((output = br.readLine()) != null) {
-                sb.append(output);
-            }
-
-            conn.disconnect();
-
-            JSONObject json = new JSONObject(sb.toString());
-            int tempCelsius = json.getJSONObject("current").getInt("temp_c");
-            int tempFahrenheit = json.getJSONObject("current").getInt("temp_f");
-
-            temperatures.add(tempCelsius);
-            temperatures.add(tempFahrenheit);
-
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-            e.printStackTrace();
-        }
-
-        return temperatures;
-    }
-
     public ArrayList<Integer> getForecastTemperature(String location, int days, boolean celcius) {
         if (days < 1 || days > 14) {
             throw new IllegalArgumentException("Number of days must be between 1 and 3");
