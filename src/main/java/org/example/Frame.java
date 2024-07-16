@@ -9,6 +9,13 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
+/**
+ * (author) Charlie Ray
+ * (author) Christopher Grigorian
+ * (author) Eric Canihuante
+ * (author) Harold Ellis
+ */
+
 public class Frame extends JFrame {
     private final JLabel cityLabel;
 
